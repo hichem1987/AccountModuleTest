@@ -9,8 +9,11 @@
         <title>Codix Authentication App</title>
         <!-- Bootstrap -->
         <link href="app/css/libraries/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <link href="app/css/custom.css" rel="stylesheet">
-        <link href="app/css/toaster.css" rel="stylesheet">
+        <!--<link href="app/css/custom.css" rel="stylesheet">-->
+        <link href="app/css/libraries/toaster/toaster.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <!-- inject:css -->
+        <!-- endinject -->
         <style>
             a {
                 color: orange;
@@ -58,9 +61,12 @@
     <script src="app/js/libraries/angular-route.min.js"></script>
     <script src="app/js/libraries/angular-animate.min.js" ></script>
     <script src="app/js/libraries/toaster.js"></script>
-    <script src="app/app.js"></script>
+<!--    <script src="app/app.js"></script>
     <script src="app/data.js"></script>
     <script src="app/directives.js"></script>
-    <script src="app/authCtrl.js"></script>
+    <script src="app/authCtrl.js"></script>-->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <!--scripts from libraries-->
 </html>
 

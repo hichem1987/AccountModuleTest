@@ -6,6 +6,7 @@
 'use strict';
 // TODO : fix dist
 var gulp = require('gulp'),
+        $ = require('gulp-load-plugins')(),
         prefix = require('gulp-autoprefixer'),
         browserSync = require('browser-sync').create(),
         browserify = require('gulp-browserify'),
@@ -17,8 +18,7 @@ var gulp = require('gulp'),
         path = require('path'),
         transform = require('vinyl-transform'),
         source = require('vinyl-source-stream'),
-        buffer = require('vinyl-buffer'),
-        $ = require('gulp-load-plugins')();
+        buffer = require('vinyl-buffer');
 
 // Paths
 var paths = {

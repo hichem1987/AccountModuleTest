@@ -1,5 +1,5 @@
 {
-  "name": "account web application",
+  "name": "bulp-starter-package",
   "version": "1.0.0",
   "description": "A basic Gulp build system.",
   "main": "gulpfile.js",
@@ -7,9 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/chrisdemars/bulp-starter-package.git"
   },
-  "author": "Hichem Hamdaoui <hamdaoui.hichem@gmail.com>",
+  "author": "Chris DeMars <cdemars86@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisdemars/bulp-starter-package/issues"
+  },
+  "homepage": "https://github.com/chrisdemars/bulp",
+  "browser": {
+    "jquery-mobile": "./node_modules/jquery-mobile/dist/jquery.mobile.js"
+  },
+  "browserify-shim": {
+    "jquery": "$"
+  },
   "browserify": {
     "transform": [
       "browserify-shim"
@@ -39,6 +51,8 @@
     "gulp-useref": "^3.1.2",
     "gulp-watch": "^4.3.5",
     "hammer": "0.0.5",
+    "jquery": "^3.1.1",
+    "modernizr": "^3.3.1",
     "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
@@ -46,6 +60,7 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "gulp-uglify": "^1.5.4"
   }
 }
