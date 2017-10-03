@@ -1,90 +1,149 @@
-/*
-Hichem hamdaoui codix authentification project
-*/
-/* 
-    Created on : 2 oct. 2017, 17:22:59
-    Author     : hhamdaoui
-*/
-
+@import "font";
 $color_1: #333;
 $color_2: #fff;
+$color_blue_theme: #1197d5;
+$color-gray : #E8E8E8;
 $background_color_1: #546489;
 $background_color_2: #F5F5F5;
+
 
 /* ng-cloak */
 /* Removed width:auto from navbar-collapse classs; */
 body {
-	padding-top: 51px;
+    font-size: 10px;
+    @include roboto-reg;
+    header{
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid $color-gray;
+        height:8rem;
+        @media (max-width:767px){
+            height:11.5rem;
+        }
+        .navbar-fixed-top{
+            position:relative;
+        }
+        .bloc-1-container{
+            height:8rem;
+            display:table;
+            width:100%;
+            @media (max-width:767px){
+                height:auto;
+            }
+            .img-container{
+                display:table-cell;
+                vertical-align:middle;
+                @media(max-width:767px){
+                    text-align: center;
+                }
+                img {
+                    width: 31.5rem;
+                    @media(max-width:767px){
+                        width:21rem;
+                    }
+                }
+            }
+        }
+        .bloc-2-container{
+            height:8rem;
+            display:table;
+            width:100%;   
+            @media (max-width:767px){
+                height: 69px;
+            }
+            .bloc-wrapper{
+                display:table-cell;
+                vertical-align:middle;
+                h1{
+                    text-align: center;
+                    font-size: 25px;
+                    color:$color_blue_theme;
+                    max-width: 320px;
+                    float: right;
+                    @media(max-width:767px){
+                        font-size:21px;
+                        float:none;
+                        max-width: none;
+                        width: auto;
+                    }
+                }
+            }
+
+        }
+
+    }
+    main {
+        margin-top: 2rem;
+    }
 }
 [ng\:cloak] {
-	display: none;
+    display: none;
 }
 [ng-cloak] {
-	display: none;
+    display: none;
 }
 [data-ng-cloak] {
-	display: none;
+    display: none;
 }
 [x-ng-cloak] {
-	display: none;
+    display: none;
 }
 .ng-cloak {
-	display: none;
+    display: none;
 }
 .x-ng.ng-cloak {
-	display: none;
+    display: none;
 }
 ul {
-	list-style: none;
+    list-style: none;
 }
 a {
-	color: $color_1;
-	&:hover {
-		cursor: pointer;
-	}
+    color: $color_1;
+    &:hover {
+        cursor: pointer;
+    }
 }
 ul.simple-post-list {
-	.post-image {
-		float: left;
-		margin-right: 12px;
-	}
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    .post-image {
+        float: left;
+        margin-right: 12px;
+    }
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .callout-box {
-	background-color: $background_color_1;
-	color: $color_2;
-	padding: 10px 20px;
+    background-color: $background_color_1;
+    color: $color_2;
+    padding: 10px 20px;
 }
 .body-title {
-	border: 1px solid #e3e3e3;
-	border-left: 5px solid #234383;
-	padding: 0 20px 20px;
+    border: 1px solid #e3e3e3;
+    border-left: 5px solid #234383;
+    padding: 0 20px 20px;
 }
 .featured-box {
-	border: 1px solid #e3e3e3;
-	border-top: 5px solid #234383;
-	padding: 0 20px 20px;
+    border: 1px solid #e3e3e3;
+    border-top: 5px solid #234383;
+    padding: 0 20px 20px;
 }
 .breadcrumbs {
-	position: relative;
-	border-bottom: 1px solid #E5E5E5;
-	background-color: $background_color_2;
+    position: relative;
+    border-bottom: 1px solid #E5E5E5;
+    background-color: $background_color_2;
 }
 .breadcrumb {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 .cart-btn {
-	border-radius: 0;
+    border-radius: 0;
 }
 .navbar {
-	border-radius: 0;
+    border-radius: 0;
 }
 .navbar-collapse {
-	border-top: 0;
-	box-shadow: none;
+    border-top: 0;
+    box-shadow: none;
 }
 .form-group-addon {
-	padding-left: -20px;
+    padding-left: -20px;
 }

@@ -9,16 +9,11 @@
         <title>Codix Authentication App</title>
         <!-- Bootstrap -->
         <link href="app/css/libraries/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <!--<link href="app/css/custom.css" rel="stylesheet">-->
+        <link href="app/css/global.css" rel="stylesheet">
         <link href="app/css/libraries/toaster/toaster.css" rel="stylesheet">
         <!-- Custom CSS -->
         <!-- inject:css -->
         <!-- endinject -->
-        <style>
-            a {
-                color: orange;
-            }
-        </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]><link href= "css/bootstrap-theme.css"rel= "stylesheet" >
@@ -30,17 +25,22 @@
 
     <body ng-cloak="">
         <header>
-            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="row">
-                        <div class="navbar-header col-md-8">
-                            <button type="button" class="navbar-toggle" toggle="collapse" target=".navbar-ex1-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" rel="home" title="AngularJS/php Authentication App">AngularJS/php Authentication App</a>
+                        <div class="col-sm-6">
+                            <div class="bloc-1-container">
+                                <div class="img-container">
+                                    <img src="app/assets/img/codix.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bloc-2-container">
+                                <div class="bloc-wrapper">
+                                    <h1 class="noMargin">AngularJS/php Authentication App</h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,10 +61,10 @@
     <script src="app/js/libraries/angular-route.min.js"></script>
     <script src="app/js/libraries/angular-animate.min.js" ></script>
     <script src="app/js/libraries/toaster.js"></script>
-<!--    <script src="app/app.js"></script>
+    <script src="app/app.js"></script>
     <script src="app/data.js"></script>
     <script src="app/directives.js"></script>
-    <script src="app/authCtrl.js"></script>-->
+    <script src="app/authCtrl.js"></script>
     <!-- inject:js -->
     <!-- endinject -->
     <!--scripts from libraries-->

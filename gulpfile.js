@@ -66,7 +66,7 @@ gulp.task('sass', function () {
             .pipe($.sass.sync().on('error', $.sass.logError))
             .pipe(prefix('last 2 versions'))
             .pipe($.sourcemaps.write())
-            .pipe(gulp.dest(paths.tmp + 'css'))
+            .pipe(gulp.dest(paths.src + 'css'))
             .pipe(browserSync.stream());
 });
 gulp.task('sass:dist', function () {
