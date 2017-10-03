@@ -29,4 +29,11 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             $location.path('login');
         });
     }
+    $scope.countries = [
+        {name: 'Bulgaria', code: 'BG'},
+        {name: 'France', code: 'FR'},
+        {name: 'Tunisia', code: 'TN'},
+        {name: 'Vietnam', code: 'VN'},
+        {name: 'Mauritius', code: 'MU'}
+    ];
 });

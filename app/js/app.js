@@ -1,0 +1,1 @@
+var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster','ngMessages','ngCookies']);

@@ -14,7 +14,7 @@
                 <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
-                            Signup for AngularCode
+                            Signup for the App
                         </h4>
                         <br/>
                         <form name="signupForm" class="form-horizontal" role="form">
@@ -22,54 +22,81 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="email">Email</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="text" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus/>
-                                        <span ng-show="signupForm.email.$error.email" class="help-inline">Email is not valid</span> 
+                                        <input type="email" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus required/>
                                     </span>
+                                    <div ng-messages="signupForm.email.$dirty && signupForm.email.$error" class="errorMessage" role="alert">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="email">Email is not valid</div>
+                                        <div ng-message="minlength">Your field is too short</div>
+                                        <div ng-message="maxlength">Your field is too long</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="password">Password</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="password" class="form-control" name = "password" placeholder="Password" ng-model="signup.password" required/>
-                                <small class="errorMessage" data-ng-show="signupForm.password.$dirty && signupForm.password.$invalid"> Enter Password.</small>
-                            </span>
+                                        <input type="password" class="form-control" name="password" placeholder="Password"  ng-minlength="5" ng-maxlength="32" ng-model="signup.password" required/>
+                                    </span>
+                                    <div ng-messages="signupForm.password.$dirty && signupForm.password.$error" class="errorMessage" role="alert">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">Your field is too short</div>
+                                        <div ng-message="maxlength">Your field is too long</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="password2">Confirm Password</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="password" class="form-control" name="password2" placeholder="Password Again" ng-model="signup.password2" password-match="signup.password" required/>                                
-                                <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</small>
+                                        <input type="password" class="form-control" name="password2" placeholder="Password Again" ng-model="signup.password2" password-match="signup.password" required/>                                
+                                        <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</small>
 
-                               <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</small>
+                                        <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</small>
 
-                            </span>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="name">Name</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="name">NickName</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Name" ng-model="signup.name" />
-                            </span>
+                                        <input type="text" name="name" class="form-control" placeholder="Name" ng-model="signup.name" ng-minlength="5" ng-maxlength="12" required/>
+                                        <!--<div ng-if="signup.name.length > 5"><p class="errorMessage">The value is too long</p></div>-->
+                                    </span>
+                                    <div ng-messages="signupForm.name.$dirty && signupForm.name.$error" class="errorMessage" role="alert">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">Your field is too short</div>
+                                        <div ng-message="maxlength">Your field is too long</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="phone">Phone</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Phone" name="phone" ng-model="signup.phone"/>
-                            </span>
+                                        <input type="number" class="form-control" placeholder="Phone" name="phone" ng-model="signup.phone" ng-minlength="5" ng-maxlength="40" required/>
+                                    </span>
+                                    <div ng-messages="signupForm.phone.$dirty && signupForm.phone.$error" class="errorMessage" role="alert">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">Your phone is too short</div>
+                                        <div ng-message="maxlength">Your phone is too long</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="address">Address</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="address">Country</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Address" ng-model="signup.address" />
-                            </span>
+                                        <select class="form-control" name="country" ng-model="signup.country" ng-init="signup.country = signup.country || country[0].value" ng-options="country.code as country.name for country in countries" required='required'>
+                                            <option value="" ng-selected="selected">-- Select a Country --</option>
+                                        </select>
+                                    </span>
+                                    <small class="errorMessage" data-ng-show="signupForm.country.$dirty && signupForm.country.$error.required">You did not selected a country</small>
+
+<!--                                    <div ng-messages="signupForm.country.$dirty && signupForm.country.$error" class="errorMessage" role="alert">
+                                        <div ng-message="invalid">You did not selected a country</div>
+                                    </div>-->
                                 </div>
                             </div>
                             <div class="form-group">

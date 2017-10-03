@@ -147,3 +147,9 @@ ul.simple-post-list {
 .form-group-addon {
     padding-left: -20px;
 }
+.errorMessage{
+    color: red;
+}
+input.ng-invalid.ng-dirty {
+    border-color: red;
+}

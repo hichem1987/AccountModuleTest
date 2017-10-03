@@ -1,5 +1,3 @@
-var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster','ngMessages']);
-
 app.config(['$routeProvider',
   function ($routeProvider) {
         $routeProvider.
@@ -33,7 +31,7 @@ app.config(['$routeProvider',
                 redirectTo: '/login'
             });
   }])
-    .run(function ($rootScope, $location, Data) {
+    .run(function ($rootScope, $location, Data,$cookies,$http) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
             $rootScope.authenticated = false;
             Data.get('session').then(function (results) {
