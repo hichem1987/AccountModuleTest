@@ -22,10 +22,15 @@ app.factory("Data", ['$http', 'toaster',
                 return results.data;
             });
         };
+        obj.updateCustomer = function (q, object) {
+            return $http.post(serviceBase + q, object).then(function (results) {
+                return results.data;
+            });
+        };
         obj.delete = function (q) {
             return $http.delete(serviceBase + q).then(function (results) {
                 return results.data;
             });
         };
         return obj;
-}]);
+    }]);

@@ -17,7 +17,7 @@ $app->post('/login', function() use ($app) {
     $db = new DbHandler();
     $password = $r->customer->password;
     $email = $r->customer->email;
-    $user = $db->getOneRecord("select uid,name,password,email,created from customers_auth where phone='$email' or email='$email'");
+    $user = $db->getOneRecord("select uid,name,phone,country,password,email,created from customers_auth where phone='$email' or email='$email'");
     if ($user != NULL) {
         if (passwordHash::check_password($user['password'], $password)) {
             $response['status'] = "success";
@@ -32,6 +32,8 @@ $app->post('/login', function() use ($app) {
             $_SESSION['uid'] = $user['uid'];
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $user['name'];
+            $_SESSION['country'] = $user['country'];
+            $_SESSION['phone'] = $user['phone'];
         } else {
             $response['status'] = "error";
             $response['message'] = 'Login failed. Incorrect credentials';
@@ -73,6 +75,7 @@ $app->post('/signUp', function() use ($app) {
             $_SESSION['phone'] = $phone;
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
+            $_SESSION['country'] = $country;
             echoResponse(200, $response);
         } else {
             $response["status"] = "error";

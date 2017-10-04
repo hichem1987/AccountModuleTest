@@ -59,6 +59,7 @@ body {
                     color:$color_blue_theme;
                     max-width: 320px;
                     float: right;
+                    line-height: 1;
                     @media(max-width:767px){
                         font-size:21px;
                         float:none;

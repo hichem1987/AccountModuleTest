@@ -1,0 +1,51 @@
+<div class="view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="header blue lighter bigger">
+                    <i class="icon-coffee green"></i>
+                    Edit your Account
+                </h4>
+                <form role="form" name="myForm" class="form-horizontal">
+                    <input ng-model="customer.uid" type="hidden" name="uid">
+                    <div class="row">
+                        <div class= "form-group">
+                            <label class= "col-md-2">Email</label>
+                            <div class="col-md-4">
+                                <input  value="customer.email" ng-model="customer.email" class= "form-control" disabled/>
+                            </div>
+                        </div>
+                        <div class= "form-group" >
+                            <label class= "col-md-2">NickName</label>
+                            <div class="col-md-4">
+                                <input name="name" ng-model="customer.name" type= "text" class= "form-control" placeholder="Your NickName" required/>
+                                <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Name Required</span>
+                            </div>
+                        </div>
+
+                        <div class= "form-group">
+                            <label class= "col-md-2">phone </label>
+                            <div class="col-md-4">
+                                <input ng-model="customer.phone" type= "text" class= "form-control" placeholder= "Phone"/>
+                            </div>
+                        </div>
+                        <div class= "form-group">
+                            <label class= "col-md-2">Country </label>
+                            <div class="col-md-4">
+                                <input ng-model="customer.country" type= "text" class= "form-control" placeholder= "Residing Country"/>
+                            </div>
+                        </div>
+                        <div class= "form-group">
+                            <label class= "col-md-2"></label>
+                            <div class="col-md-4">
+                                <a href="#!/dashboard" class="btn">Cancel</a>
+                                <button ng-click="updateCustomer(customer);" 
+                                        ng-disabled="isClean() || myForm.$invalid "
+                                        class="btn btn-primary">{{buttonText}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div></div>
+    </div>
+</div>

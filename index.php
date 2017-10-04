@@ -66,8 +66,10 @@
     <script src="app/js/app.js"></script>
     <script src="app/js/config/config.js"></script>
     <script src="app/js/factories/data.js"></script>
+    <script src="app/js/services/authentication.service.js"></script>
     <script src="app/js/directives/directives.js"></script>
     <script src="app/js/controllers/authCtrl.js"></script>
+    <script src="app/js/controllers/editCtrl.js"></script>
     <!-- inject:js -->
     <!-- endinject -->
     <!--scripts from libraries-->

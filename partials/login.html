@@ -24,10 +24,10 @@
 
                         <form name="loginForm" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="email"> Email / Phone </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="email"> Email </label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="text" class="form-control" placeholder="Email / Phone" name="email" ng-model="login.email" required focus/>
+                                        <input type="text" class="form-control" placeholder="Email" name="email" ng-model="login.email" required focus/>
                                         <i class="ace-icon fa fa-user"></i>
                                     </span>
                                 </div>
@@ -39,6 +39,13 @@
                                         <input type="password" class="form-control" placeholder="Password" ng-model="login.password" required/>
                                         <i class="ace-icon fa fa-lock"></i>
                                     </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-push-3 col-sm-9">
+                                    <div class="radio ">
+                                        <label><input type="checkbox" name="rememberme"  ng-model="login.rememberme" value="">Remember me</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="space"></div>
@@ -54,7 +61,10 @@
                                 </div>
                             </div>
                             <div class="space-4"></div>
-                            <span class="lbl col-sm-3"> </span><div class="col-sm-7">Don't have an account? <a href="#!/signup">Signup</a></div>
+                            <span class="lbl col-sm-3"> </span>
+                            <div class="col-sm-7">
+                                <p>Don't have an account? <a href="#!/signup">Signup</a></p>
+                            </div>
                         </form>
 
 
