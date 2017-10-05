@@ -1,19 +1,35 @@
+$font-folder-place: '../assets/fonts';
 @font-face {
     font-family: 'robotoregular';
-    src: url('../assets/fonts/Roboto-Regular-webfont.eot');
-    src: url('../assets/fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-        url('../assets/fonts/Roboto-Regular-webfont.woff2') format('woff2'),
-        url('../assets/fonts/Roboto-Regular-webfont.woff') format('woff'),
-        url('../assets/fonts/Roboto-Regular-webfont.ttf') format('truetype'),
-        url('../assets/fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    src: url('#{$font-folder-place}/Roboto-Regular-webfont.eot');
+    src: url('#{$font-folder-place}/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('#{$font-folder-place}/Roboto-Regular-webfont.woff2') format('woff2'),
+        url('#{$font-folder-place}/Roboto-Regular-webfont.woff') format('woff'),
+        url('#{$font-folder-place}/Roboto-Regular-webfont.ttf') format('truetype'),
+        url('#{$font-folder-place}/Roboto-Regular-webfont.svg#robotoregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'robotobold';
+    src: url('#{$font-folder-place}/Roboto-Bold-webfont.eot');
+    src: url('#{$font-folder-place}/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-folder-place}/Roboto-Bold-webfont.woff') format('woff'),
+         url('#{$font-folder-place}/Roboto-Bold-webfont.ttf') format('truetype'),
+         url('#{$font-folder-place}/Roboto-Bold-webfont.svg#robotobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
 
 
 @mixin roboto-reg {
     font-family: 'robotoregular', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+@mixin roboto-bold {
+    font-family: 'robotobold', sans-serif;
     font-style: normal;
     font-weight: normal;
 }

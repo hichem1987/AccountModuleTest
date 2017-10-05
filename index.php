@@ -9,6 +9,7 @@
         <title>Codix Authentication App</title>
         <!-- Bootstrap -->
         <link href="app/css/libraries/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="app/css/fontawesome/font-awesome.css" rel="stylesheet">
         <link href="app/css/global.css" rel="stylesheet">
         <link href="app/css/libraries/toaster/toaster.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -31,14 +32,16 @@
                         <div class="col-sm-6">
                             <div class="bloc-1-container">
                                 <div class="img-container">
-                                    <img src="app/assets/img/codix.png" />
+                                    
+                                    <a href="#" ng-if="!uid" title="home page"><img src="app/assets/img/codix.png" alt="logo website"/></a>
+                                    <a href="#!/dashboard" ng-if="uid" title="home page"><img src="app/assets/img/codix.png" alt="logo website"/></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="bloc-2-container">
                                 <div class="bloc-wrapper">
-                                    <h1 class="noMargin">AngularJS/php Authentication App</h1>
+                                    <h1 class="noMargin">Codix Authentication App</h1>
                                 </div>
                             </div>
                         </div>
@@ -65,9 +68,10 @@
     <script src="app/js/libraries/toaster.js"></script>
     <script src="app/js/app.js"></script>
     <script src="app/js/config/config.js"></script>
-    <script src="app/js/factories/data.js"></script>
+    <script src="app/js/services/data.service.js"></script>
     <script src="app/js/services/authentication.service.js"></script>
-    <script src="app/js/directives/directives.js"></script>
+    <script src="app/js/services/countries.service.js"></script>
+    <script src="app/js/directives/miscelineous.directive.js"></script>
     <script src="app/js/controllers/authCtrl.js"></script>
     <script src="app/js/controllers/editCtrl.js"></script>
     <!-- inject:js -->

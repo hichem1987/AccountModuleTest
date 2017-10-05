@@ -1,51 +1,84 @@
-<div class="view">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h4 class="header blue lighter bigger">
-                    <i class="icon-coffee green"></i>
-                    Edit your Account
-                </h4>
-                <form role="form" name="myForm" class="form-horizontal">
-                    <input ng-model="customer.uid" type="hidden" name="uid">
-                    <div class="row">
-                        <div class= "form-group">
-                            <label class= "col-md-2">Email</label>
-                            <div class="col-md-4">
-                                <input  value="customer.email" ng-model="customer.email" class= "form-control" disabled/>
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#!/dashboard">Home</a>
+        </li>
+        <li class="active">Edit your Account</li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+            <div id="login-box" class="login-box visible widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            Edit Account
+                        </h4>
+                        <br/>
+                        <form role="form" name="myForm" class="form-horizontal">
+                            <input ng-model="customer.uid" type="hidden" name="uid">
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right">Email</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <input  value="customer.email" ng-model="customer.email" class="form-control" readonly/>
+                                        <span><i class="ace-icon fa fa-envelope"></i></span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class= "form-group" >
-                            <label class= "col-md-2">NickName</label>
-                            <div class="col-md-4">
-                                <input name="name" ng-model="customer.name" type= "text" class= "form-control" placeholder="Your NickName" required/>
-                                <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Name Required</span>
+                            <div class="form-group" >
+                                <label class="col-sm-5 control-label no-padding-right">NickName</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <input name="name" ng-model="customer.name" type= "text" class= "form-control" placeholder="Your NickName" required/>
+                                        <span><i class="ace-icon fa fa-user"></i></span>
+                                        <div class="errorMessage" ng-show="myForm.name.$dirty && myForm.name.$invalid" >NickName Required</div>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class= "form-group">
-                            <label class= "col-md-2">phone </label>
-                            <div class="col-md-4">
-                                <input ng-model="customer.phone" type= "text" class= "form-control" placeholder= "Phone"/>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right">phone </label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <input ng-model="customer.phone" type="number" class="form-control" placeholder="Phone" ng-minlength="5" ng-maxlength="40" required/>
+                                        <span><i class="ace-icon fa fa-phone"></i></span>
+                                    </span>
+                                    <div ng-messages="myForm.phone.$dirty && myForm.phone.$error" class="errorMessage" role="alert">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">Your phone is too short</div>
+                                        <div ng-message="maxlength">Your phone is too long</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class= "form-group">
-                            <label class= "col-md-2">Country </label>
-                            <div class="col-md-4">
-                                <input ng-model="customer.country" type= "text" class= "form-control" placeholder= "Residing Country"/>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="country">Country</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <select class="form-control" name="country" ng-model="customer.country"  ng-options="country.code as country.name for country in countries" required='required'>
+                                            <option value="" >-- Select a Country --</option>
+                                        </select>
+                                    </span>
+                                    <small class="errorMessage" data-ng-show="customer.country.$dirty && customer.country.$error.required">You did not selected a country</small>
+                                </div>
                             </div>
-                        </div>
-                        <div class= "form-group">
-                            <label class= "col-md-2"></label>
-                            <div class="col-md-4">
-                                <a href="#!/dashboard" class="btn">Cancel</a>
-                                <button ng-click="updateCustomer(customer);" 
-                                        ng-disabled="isClean() || myForm.$invalid "
-                                        class="btn btn-primary">{{buttonText}}</button>
+                            <div class="form-group">
+                                <div class="col-md-push-6 col-md-6">
+                                    <div class="ifloatRight bloc-buttons">
+                                        <a href="#!/dashboard" class="btn btn-transparent"><i class="ace-icon fa fa-times"></i>Cancel</a>
+                                        <button ng-click="updateCustomer(customer);" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">
+                                            <i class="ace-icon fa fa-refresh"></i>
+                                            Update Account
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                        </form>
                     </div>
-                </form>
-            </div></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

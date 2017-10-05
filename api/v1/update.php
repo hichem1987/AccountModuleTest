@@ -23,8 +23,8 @@ $app->post('/UpdateCustomer', function() use ($app) {
         $result = $db->updateTable($r->customer, $column_names, $table_name, 'uid');
         if ($result != NULL) {
             $response["status"] = "success";
-            $response["message"] = "User account created successfully";
-            $response["uid"] = $result;
+            $response["message"] = "your account updated successfully";
+            $response["uid"] = $result["uid"];
             if (!isset($_SESSION)) {
                 session_start();
             }
@@ -33,7 +33,7 @@ $app->post('/UpdateCustomer', function() use ($app) {
             if (isset($name)) {
                 $_SESSION['name'] = $name;
             }
-            $_SESSION['email'] = $country;
+            $_SESSION['country'] = $country;
             echoResponse(200, $response);
         } else {
             $response["status"] = "error";

@@ -65,8 +65,8 @@ class DbHandler {
         $query = "UPDATE ".$table_name." SET " . trim($columns, ',') . " WHERE ".$table_key."=$id";
         if (!empty($obj)) {
             $r = $this->conn->query($query) or die($this->conn->error . __LINE__);
-            $success = array('status' => "Success", "msg" => "$table_name " . $id . " Updated Successfully.", "data" => $obj);
-            return $success;
+//            $success = array('status' => "Success", "msg" => "$table_name " . $id . " Updated Successfully.", "data" => $obj);
+            return $obj;
         } 
     }
 

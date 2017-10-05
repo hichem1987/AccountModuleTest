@@ -7,7 +7,7 @@
         <li class="active">Login</li>
     </ul>
 </div>
-<div class="page-content">
+<div class="container">
 
     <div class="row">
         <div class="space-6"></div>
@@ -17,18 +17,15 @@
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
                             <i class="icon-coffee green"></i>
-                            Login to AngularCode
+                            Login to Codix authentification App
                         </h4>
-
-                        <div class="space-16"></div>
-
                         <form name="loginForm" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="email"> Email </label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="text" class="form-control" placeholder="Email" name="email" ng-model="login.email" required focus/>
-                                        <i class="ace-icon fa fa-user"></i>
+                                        <span><i class="ace-icon fa fa-envelope"></i></span>
                                     </span>
                                 </div>
                             </div>
@@ -37,33 +34,34 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="password" class="form-control" placeholder="Password" ng-model="login.password" required/>
-                                        <i class="ace-icon fa fa-lock"></i>
+                                        <span><i class="ace-icon fa fa-lock"></i></span>
                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 col-sm-push-3 col-sm-9">
-                                    <div class="radio ">
-                                        <label><input type="checkbox" name="rememberme"  ng-model="login.rememberme" value="">Remember me</label>
+                                    <div>
+                                        <input id="rememberme" type="checkbox" name="rememberme"  ng-model="login.rememberme" value="" />
+                                        <label for="rememberme">Remember me</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="space"></div>
                             <div class="clearfix">
                                 <div class="row">
                                     <label class="col-sm-3 control-label no-padding-right"> </label>
                                     <div class="col-sm-7">
-                                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
-                                            <i class="ace-icon fa fa-key"></i>
-                                            Login
-                                        </button>
+                                        <div class="bloc-buttons">
+                                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
+                                                <i class="ace-icon fa fa-key"></i>
+                                                Login
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="space-4"></div>
                             <span class="lbl col-sm-3"> </span>
                             <div class="col-sm-7">
-                                <p>Don't have an account? <a href="#!/signup">Signup</a></p>
+                                <p class="text-link">Don't have an account? <a class="link" href="#!/signup" title="sign up page">Signup</a></p>
                             </div>
                         </form>
 

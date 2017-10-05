@@ -6,7 +6,7 @@
         <li class="active">SignUp</li>
     </ul>
 </div>
-<div class="page-content">
+<div class="container">
     <div class="row">
         <div class="space-6"></div>
         <div class="col-sm-6 col-sm-offset-1">
@@ -16,13 +16,13 @@
                         <h4 class="header blue lighter bigger">
                             Signup for the App
                         </h4>
-                        <br/>
                         <form name="signupForm" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="email">Email</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="email" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus required/>
+                                        <span><i class="ace-icon fa fa-envelope"></i></span>
                                     </span>
                                     <div ng-messages="signupForm.email.$dirty && signupForm.email.$error" class="errorMessage" role="alert">
                                         <div ng-message="required">You did not enter a field</div>
@@ -37,6 +37,7 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="password" class="form-control" name="password" placeholder="Password"  ng-minlength="5" ng-maxlength="32" ng-model="signup.password" required/>
+                                        <span><i class="ace-icon fa fa-lock"></i></span>
                                     </span>
                                     <div ng-messages="signupForm.password.$dirty && signupForm.password.$error" class="errorMessage" role="alert">
                                         <div ng-message="required">You did not enter a field</div>
@@ -48,8 +49,9 @@
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="password2">Confirm Password</label>
                                 <div class="col-sm-7">
-                                    <span class="block input-icon input-icon-right">
+                                    <span class="block input-icon input-icon-right input-green">
                                         <input type="password" class="form-control" name="password2" placeholder="Password Again" ng-model="signup.password2" password-match="signup.password" required/>                                
+                                        <span><i class="ace-icon fa fa-lock"></i></span>
                                         <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</small>
 
                                         <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</small>
@@ -62,7 +64,7 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="text" name="name" class="form-control" placeholder="Name" ng-model="signup.name" ng-minlength="5" ng-maxlength="12" required/>
-                                        <!--<div ng-if="signup.name.length > 5"><p class="errorMessage">The value is too long</p></div>-->
+                                        <span><i class="ace-icon fa fa-user"></i></span>
                                     </span>
                                     <div ng-messages="signupForm.name.$dirty && signupForm.name.$error" class="errorMessage" role="alert">
                                         <div ng-message="required">You did not enter a field</div>
@@ -76,6 +78,7 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="number" class="form-control" placeholder="Phone" name="phone" ng-model="signup.phone" ng-minlength="5" ng-maxlength="40" required/>
+                                        <span><i class="ace-icon fa fa-phone"></i></span>
                                     </span>
                                     <div ng-messages="signupForm.phone.$dirty && signupForm.phone.$error" class="errorMessage" role="alert">
                                         <div ng-message="required">You did not enter a field</div>
@@ -85,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="address">Country</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="country">Country</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <select class="form-control" name="country" ng-model="signup.country" ng-init="signup.country = signup.country || country[0].value" ng-options="country.code as country.name for country in countries" required='required'>
@@ -94,22 +97,23 @@
                                     </span>
                                     <small class="errorMessage" data-ng-show="signupForm.country.$dirty && signupForm.country.$error.required">You did not selected a country</small>
 
-<!--                                    <div ng-messages="signupForm.country.$dirty && signupForm.country.$error" class="errorMessage" role="alert">
-                                        <div ng-message="invalid">You did not selected a country</div>
-                                    </div>-->
+
                                 </div>
                             </div>
                             <div class="form-group">
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
+                                    <div class="bloc-buttons">
                                     <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+                                        <i class="ace-icon fa fa-sign-in"></i>
                                         Sign Up
                                     </button>
+                                    </div>
                                 </div>
                             </div>
-                            </fieldset>
                             <span class="lbl col-sm-5"> </span>
-                            <div class="col-sm-7">Already have an account? <a href="#/login">SignIn</a>
+                            <div class="col-sm-7">
+                                <p class="text-link">Already have an account? <a class="link " title="sign in" href="#/login">SignIn</a></p>
                             </div>
                         </form>
                     </div>

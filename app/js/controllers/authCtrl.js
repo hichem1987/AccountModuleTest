@@ -1,11 +1,11 @@
-app.controller('authCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http', 'Data', 'AuthenticationService'
-            , function ($scope, $rootScope, $routeParams, $location, $http, Data, AuthenticationService) {
+app.controller('authCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http', 'Data', 'AuthenticationService', 'countries'
+            , function ($scope, $rootScope, $routeParams, $location, $http, Data, AuthenticationService, countries) {
                 //initially set those objects to null to avoid undefined error
                 $scope.login = {};
                 $scope.signup = {};
                 $scope.updateCustomer = {};
+//                do login function
                 $scope.doLogin = function (customer) {
-
                     if (customer.rememberme) {
                         AuthenticationService.SetCredentials(customer.email, customer.password);
                     }
@@ -18,6 +18,7 @@ app.controller('authCtrl', ['$scope', '$rootScope', '$routeParams', '$location',
                         }
                     });
                 };
+//                sign up
                 $scope.signup = {email: '', password: '', name: '', phone: '', country: ''};
                 $scope.signUp = function (customer) {
                     Data.post('signUp', {
@@ -29,18 +30,15 @@ app.controller('authCtrl', ['$scope', '$rootScope', '$routeParams', '$location',
                         }
                     });
                 };
+//                log out function
                 $scope.logout = function () {
                     Data.get('logout').then(function (results) {
+                        $rootScope.uid = '';
                         AuthenticationService.ClearCredentials();
                         Data.toast(results);
-                        $location.path('login');
+                        window.location.replace('#!/login');
                     });
                 }
-                $scope.countries = [
-                    {name: 'Bulgaria', code: 'BG'},
-                    {name: 'France', code: 'FR'},
-                    {name: 'Tunisia', code: 'TN'},
-                    {name: 'Vietnam', code: 'VN'},
-                    {name: 'Mauritius', code: 'MU'}
-                ];
+//                list countries from the service
+                $scope.countries = countries.listCountries;
             }]);

@@ -1,33 +1,33 @@
 <div class="breadcrumbs" id="breadcrumbs">
     <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Dashboard</li>
+
+        <li class="active ace-icon fa fa-home home-icon"><span class="marge-left">Dashboard</span></li>
     </ul>
 </div>
-<div class="page-content">
+<div class="container">
     <div class="row">
-        <div class="space-6"></div>
-        <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-11 col-sm-offset-1">
             <div id="login-box" class="login-box visible widget-box no-border">
                 <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
-                            <i class="icon-coffee green"></i>
-                            Dashboard {{name}}
+                            your informations
                         </h4>
-                        <div class="space-16"></div>
                         <div>
-                            <p>UID: {{uid}}</p>
-                            <p>Nickname {{name}}</p>
-                            <p>E-MAIL: {{email}} </p>
+                            <p class="bloc-information"><span>UID:</span> <span>{{uid}}</span></p>
+                            <p class="bloc-information"><span>Nickname</span> <span>{{name}}</span></p>
+                            <p class="bloc-information"><span>E-MAIL:</span> <span>{{email}}</span> </p>
                         </div>
-                        
-                        <a href="#!/edit-customer/{{uid}}" class="btn">Edit Account</a>
-                        <a ng-click="logout();">Logout</a>
+
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4  col-sm-offset-1">
+            <div class="form-group">
+                <div class="bloc-buttons">
+                <a href="#!/edit-customer/{{uid}}" class="btn btn-primary"><i class="ace-icon fa fa-edit"></i>Edit Account</a>
+                <a ng-click="logout();" class="btn btn-transparent"><i class="ace-icon fa fa-close"></i>Logout</a>
                 </div>
             </div>
         </div>
