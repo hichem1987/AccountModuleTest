@@ -18,13 +18,12 @@ var gulp = require('gulp'),
         path = require('path'),
         transform = require('vinyl-transform'),
         source = require('vinyl-source-stream'),
+        ngAnnotate = require('gulp-ng-annotate'),
         buffer = require('vinyl-buffer');
 
 // Paths
 var paths = {
-    tmp: ".tmp/",
-    src: "app/",
-    dist: "docs/"
+    src: "app/"
 }
 
 // Options
@@ -42,7 +41,7 @@ var wiredepOptions = {
 };
 
 var injectOptions = {
-    ignorePath: ['.tmp/', 'dist/', 'docs/'],
+    ignorePath: ['.src/', 'dist/', 'docs/'],
     addRootSlash: false
 };
 
@@ -70,7 +69,9 @@ gulp.task('sass', function () {
             .pipe(browserSync.stream());
 });
 gulp.task('sass:dist', function () {
-    return gulp.src(paths.src + 'sass/**/*.scss')
+    return gulp.src([paths.src + 'sass/**/*.scss',
+        '!' + paths.src + 'sass/fontawesome/**/*.scss'
+    ])
             .pipe($.sass.sync().on('error', $.sass.logError))
             .pipe(prefix('last 2 versions'))
             .pipe($.cssmin())
@@ -84,12 +85,18 @@ gulp.task('sass:dist', function () {
 
 // Configure JS.
 gulp.task('js:dist', function () {
-    return gulp.src([paths.src + 'js/*.js',
-         '!' + paths.src + 'libraries/css/**/*.*'
-            ])
+    return gulp.src([paths.src + 'js/app.js'
+                , paths.src + 'js/config/*.js'
+                , paths.src + 'js/services/*.js'
+                , paths.src + 'js/directives/*.js'
+                , paths.src + 'js/controllers/*.js'
+                , '!' + paths.src + 'js/libraries/**/*.*'
+                , '!' + paths.src + 'js/scripts.min.js'
+    ])
             .pipe($.concat('scripts.js'))
             .pipe(browserify(browserifyOptsProd))
             .pipe(buffer())
+            .pipe(ngAnnotate({ add: true }))
             .pipe($.uglify())
             .pipe($.rename({
                 suffix: '.min'
@@ -101,50 +108,31 @@ gulp.task('js:dist', function () {
 gulp.task("js:browserify", function () {
     return gulp.src(paths.src + 'js/app.js')
             .pipe(browserify(browserifyOpts))
-            .pipe(gulp.dest(paths.tmp + 'js'));
+            .pipe(gulp.dest(paths.src + 'js'));
 });
 
 // Configure image stuff.
 gulp.task('images', function () {
     return gulp.src(paths.src + 'assets/images/**/*.+(png|jpg|gif|svg)')
             .pipe($.imagemin())
-            .pipe(gulp.dest(paths.tmp + 'assets/images'));
+            .pipe(gulp.dest(paths.src + 'assets/images'));
 });
 gulp.task('images:dist', function () {
     return gulp.src(paths.src + 'assets/images/**/*.+(png|jpg|gif|svg)')
             .pipe($.imagemin())
-            .pipe(gulp.dest(paths.dist + 'assets/images'));
+            .pipe(gulp.dest(paths.src + 'assets/images'));
 });
 
-gulp.task('moveJs', function () {
-    return gulp.src(paths.src + 'library/**/*')
-            .pipe(gulp.dest(paths.tmp + 'library'));
-});
-gulp.task('moveJs:dist', function () {
-    return gulp.src(paths.src + 'library/**/*')
-            .pipe(gulp.dest(paths.dist + 'library'));
-});
-gulp.task('moveData:dist', function () {
-    return gulp.src(paths.src + 'data/**/*')
-            .pipe(gulp.dest(paths.dist + 'data'));
-});
-gulp.task('moveAssets', function () {
-    return gulp.src(paths.src + 'assets/**/*')
-            .pipe(gulp.dest(paths.tmp + 'assets'));
-});
-gulp.task('moveData', function () {
-    return gulp.src(paths.src + 'data/**/*')
-            .pipe(gulp.dest(paths.tmp + 'data'));
-});
+
 gulp.task('font:dist', function () {
     return gulp.src(paths.src + 'assets/fonts/**/*.+(eot|eot?#iefix|woff2|woff|ttf|svg)')
-            .pipe(gulp.dest(paths.dist + 'assets/fonts'));
+            .pipe(gulp.dest(paths.src + 'assets/fonts'));
 });
 
 gulp.task('watch', function () {
     var handleDelete = function (pathToDel) {
         var filePathFromSrc = path.relative(path.resolve(paths.src), pathToDel);
-        var destFilePath = path.resolve(paths.tmp, filePathFromSrc);
+        var destFilePath = path.resolve(paths.src, filePathFromSrc);
         del.sync(destFilePath);
     }
 
@@ -188,97 +176,65 @@ gulp.task('watch', function () {
 
 gulp.task('inject', function () {
     var injectStyles = gulp.src([
-        // selects all css files from the .tmp dir
-        paths.src + '/**/*.css',
+        // selects all css files from the .src dir
+        paths.src + 'css/**/*.css',
         // but ignores css files in the library
-        '!' + paths.src + 'libraries/css/**/*.*'
+        '!' + paths.src + 'css/libraries/**/*.*',
+        '!' + paths.src + 'css/app.min.css'
     ], {
         read: false
     });
 
     var injectScripts = gulp.src([
-        // selects all js files from .tmp dir
-        paths.src + '/**/*.js',
-        // but ignores test & library files
-        '!' + paths.src + '/**/*.test.js',
-        '!' + paths.src + 'libraries/js/**/*.js'
+        // selects all js files from .src dir
+        paths.src + 'js/app.js'
+                , paths.src + 'js/config/*.js'
+                , paths.src + 'js/services/*.js'
+                , paths.src + 'js/directives/*.js'
+                , paths.src + 'js/controllers/*.js'
+                // but ignores test & library files
+                , '!' + paths.src + 'js/scripts.min.js',
+        '!' + paths.src + 'js/libraries/**/*.js'
     ]);
-
-    return gulp.src(paths.src + '*.html')
+    return gulp.src('*.php')
             .pipe($.inject(injectStyles, injectOptions))
             .pipe($.inject(injectScripts, injectOptions))
-            // write the injections to the .tmp/index.html file
-            .pipe(gulp.dest(paths.src));
+            // write the injections to the .src/index.html file
+            .pipe(gulp.dest(''));
 });
 gulp.task('inject:dist', function () {
     var injectStyles = gulp.src([
-        // selects all css files from the .tmp dir
-        paths.src + '/**/*.css',
+        // selects all css files from the .src dir
+        paths.src + 'css/**/*.css',
         // but ignores test & library files
-        '!' + paths.dist + 'libraries/**/**/*.*'
+        '!' + paths.src + 'css/libraries/**/**/*.*',
+        '!' + paths.src + 'css/global.css'
     ], {
         read: false
     });
 
     var injectScripts = gulp.src([
-        // selects all js files from .tmp dir
-        paths.src + '/**/*.js',
+        // selects all js files from .src dir
+        paths.src + 'js/scripts.min.js',
         // but ignores test & library files
         '!' + paths.src + '/**/*.test.js',
-        '!' + paths.src + 'libraries/**/*.js'
+        '!' + paths.src + 'js/libraries/**/*.js'
     ]);
-
-    return gulp.pipe($.inject(injectStyles, injectOptions))
+    return gulp.src('*.php')
+            .pipe($.inject(injectStyles, injectOptions))
             .pipe($.inject(injectScripts, injectOptions))
-            // write the injections to the .tmp/index.html file
-            .pipe(gulp.dest(paths.src));
+            // write the injections to the .src/index.html file
+            .pipe(gulp.dest(''));
 });
-gulp.task('useref:dist', function () {
-    return gulp.src(paths.dist + '*.html')
-            .pipe(useref())
-            .pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('clean', function () {
-    return del([
-        paths.tmp + '**/*'
-    ]);
-});
-
-gulp.task('clean:dist', function () {
-    return del([
-        paths.dist + '**/*'
-    ]);
-});
-
-gulp.task('move', function () {
-    // the base option sets the relative root for the set of files,
-    // preserving the folder structure
-    gulp.src(paths.src + '**/*.html', {
-        base: paths.src
-    })
-            .pipe(gulp.dest(paths.tmp));
-});
-gulp.task('move:dist', function () {
-    // the base option sets the relative root for the set of files,
-    // preserving the folder structure
-    gulp.src(paths.src + '**/*.html', {
-        base: paths.src
-    })
-            .pipe(gulp.dest(paths.dist));
-});
-
 //gulp.task('default', ['move', 'sass', 'js:browserify', 'images', 'inject']);
 //
 gulp.task('default', function (callback) {
-    runSequence('clean', ['move', 'sass', 'moveAssets', 'moveData'],
-            'moveJs',
-            'js:browserify',
+    runSequence('sass',
             'inject',
             callback);
 });
 gulp.task('prod', function (callback) {
-    runSequence('sass:dist',
+    runSequence('default', 'sass:dist',
             'js:dist',
             'inject:dist',
             callback);

@@ -9,11 +9,11 @@
         <title>Codix Authentication App</title>
         <!-- Bootstrap -->
         <link href="app/css/libraries/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <link href="app/css/fontawesome/font-awesome.css" rel="stylesheet">
-        <link href="app/css/global.css" rel="stylesheet">
         <link href="app/css/libraries/toaster/toaster.css" rel="stylesheet">
         <!-- Custom CSS -->
         <!-- inject:css -->
+        <link rel="stylesheet" href="app/css/global.css">
+        <link rel="stylesheet" href="app/css/fontawesome/font-awesome.css">
         <!-- endinject -->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,9 +32,8 @@
                         <div class="col-sm-6">
                             <div class="bloc-1-container">
                                 <div class="img-container">
-                                    
-                                    <a href="#" ng-if="!uid" title="home page"><img src="app/assets/img/codix.png" alt="logo website"/></a>
-                                    <a href="#!/dashboard" ng-if="uid" title="home page"><img src="app/assets/img/codix.png" alt="logo website"/></a>
+
+                                    <a ng-attr-href="{{uid ? '#!/dashboard' : '#!/' }}" title="home page"><img src="app/assets/img/codix.png" alt="logo website"/></a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +48,6 @@
                 </div>
             </div>
         </header>
-        <div>
             <main>
                 <div class="container" >
 
@@ -66,15 +64,15 @@
     <script src="app/js/libraries/angular-animate.min.js"></script>
     <script src="app/js/libraries/angular-messages.min.js"></script>
     <script src="app/js/libraries/toaster.js"></script>
+    <!-- inject:js -->
     <script src="app/js/app.js"></script>
     <script src="app/js/config/config.js"></script>
-    <script src="app/js/services/data.service.js"></script>
     <script src="app/js/services/authentication.service.js"></script>
     <script src="app/js/services/countries.service.js"></script>
+    <script src="app/js/services/data.service.js"></script>
     <script src="app/js/directives/miscelineous.directive.js"></script>
     <script src="app/js/controllers/authCtrl.js"></script>
     <script src="app/js/controllers/editCtrl.js"></script>
-    <!-- inject:js -->
     <!-- endinject -->
     <!--scripts from libraries-->
 </html>

@@ -31,7 +31,7 @@ app.config(['$routeProvider',
                     title: 'Edit Customers',
                     templateUrl: 'partials/edit-customer.html',
                     controller: 'editCtrl',
-                    resolve: {
+                    resolve: {/* @ngInject */
                         customer: function (Data, $route) {
                             var customerID = $route.current.params.customerID;
                             return   Data.get('session').then(function (results) {

@@ -1,8 +1,8 @@
 /* 
  * Hichem hamdaoui codix authentification project
  */
-app.controller('editCtrl', ['$scope', '$rootScope', '$location', '$routeParams', 'Data', 'customer', 'countries',
-    function ($scope, $rootScope, $location, $routeParams, Data, customer, countries) {
+app.controller('editCtrl', ['$scope', '$location', '$routeParams', 'Data', 'customer', 'countries',
+    function ($scope, $location, $routeParams, Data, customer, countries) {
         var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
         var original = customer;
         original.uid = customerID;

@@ -303,6 +303,10 @@ p.bloc-information{
     }
     span:nth-child(1){
         font-size: 2.5rem;
+        @media(max-width:767px){
+            display: block;
+            margin-bottom:1rem;
+        }
     }
 
     span:nth-child(2){
