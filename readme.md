@@ -1,8 +1,8 @@
 ### Presentation
-web app project realized fellowing internal requirements for the test. The project is called Codix Authentication App.
-This web App allow the Sign Up/ Sign IN with the possibility of "remember me" functionnality using cookies.
-For the backend the technology used is PHP5.6 . For frontend, it is AngularJs 1.6.
-Backend and frontend communicate through Rest Web services. Gulp and Bootstrap CSS framework are used in this project.
+web app project realized fellowing internal requirements for a job interview test. The project is called Codix Authentication App.
+This web App allow the Sign Up/Sign IN functionnalities with the possibility of "remember me" functionnality using cookies.
+For the backend the technology used is PHP5.6 . For frontend development, it is AngularJs 1.6.
+Backend and frontend communicate through Restful Web services. Gulp and Bootstrap CSS framework are used in this project.
 ### Prerequisites
 NodeJs Installation
 PHP/Mysql web server (example Wamp as software and apache as web server) 
