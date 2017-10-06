@@ -60,11 +60,11 @@
     </body>
     <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
     <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-cookies.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-messages.min.js"></script>
+    <script src="app/js/libraries/angular.min.js"></script>
+    <script src="app/js/libraries/angular-route.min.js"></script>
+    <script src="app/js/libraries/angular-cookies.min.js"></script>
+    <script src="app/js/libraries/angular-animate.min.js"></script>
+    <script src="app/js/libraries/angular-messages.min.js"></script>
     <script src="app/js/libraries/toaster.js"></script>
     <script src="app/js/app.js"></script>
     <script src="app/js/config/config.js"></script>

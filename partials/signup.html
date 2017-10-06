@@ -21,7 +21,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="email">Email</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="email" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus required/>
+                                        <input type="email" class="form-control" placeholder="Email" name="email" ng-model="signup.email" ng-minlength="5" ng-maxlength="40" focus required/>
                                         <span><i class="ace-icon fa fa-envelope"></i></span>
                                     </span>
                                     <div ng-messages="signupForm.email.$dirty && signupForm.email.$error" class="errorMessage" role="alert">

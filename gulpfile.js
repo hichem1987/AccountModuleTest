@@ -78,21 +78,24 @@ gulp.task('sass:dist', function () {
             .pipe($.rename({
                 suffix: '.min'
             }))
-            .pipe(gulp.dest(paths.dist + 'css'))
+            .pipe(gulp.dest(paths.src + 'css'))
             .pipe(browserSync.stream());
 });
 
 // Configure JS.
 gulp.task('js:dist', function () {
-    return gulp.src(paths.src + 'js/app.js')
+    return gulp.src([paths.src + 'js/*.js',
+         '!' + paths.src + 'libraries/css/**/*.*'
+            ])
+            .pipe($.concat('scripts.js'))
             .pipe(browserify(browserifyOptsProd))
             .pipe(buffer())
             .pipe($.uglify())
             .pipe($.rename({
                 suffix: '.min'
             }))
-            .pipe(gulp.dest(paths.dist + 'js'));
-   
+            .pipe(gulp.dest(paths.src + 'js'));
+
 });
 
 gulp.task("js:browserify", function () {
@@ -210,26 +213,25 @@ gulp.task('inject', function () {
 gulp.task('inject:dist', function () {
     var injectStyles = gulp.src([
         // selects all css files from the .tmp dir
-        paths.dist + '/**/*.css',
+        paths.src + '/**/*.css',
         // but ignores test & library files
-        '!' + paths.dist + 'library/**/**/*.*'
+        '!' + paths.dist + 'libraries/**/**/*.*'
     ], {
         read: false
     });
 
     var injectScripts = gulp.src([
         // selects all js files from .tmp dir
-        paths.dist + '/**/*.js',
+        paths.src + '/**/*.js',
         // but ignores test & library files
-        '!' + paths.dist + '/**/*.test.js',
-        '!' + paths.dist + 'library/js/**/*.js'
+        '!' + paths.src + '/**/*.test.js',
+        '!' + paths.src + 'libraries/**/*.js'
     ]);
 
-    return gulp.src(paths.tmp + '*.html')
-            .pipe($.inject(injectStyles, injectOptions))
+    return gulp.pipe($.inject(injectStyles, injectOptions))
             .pipe($.inject(injectScripts, injectOptions))
             // write the injections to the .tmp/index.html file
-            .pipe(gulp.dest(paths.dist));
+            .pipe(gulp.dest(paths.src));
 });
 gulp.task('useref:dist', function () {
     return gulp.src(paths.dist + '*.html')
@@ -269,19 +271,16 @@ gulp.task('move:dist', function () {
 //gulp.task('default', ['move', 'sass', 'js:browserify', 'images', 'inject']);
 //
 gulp.task('default', function (callback) {
-    runSequence('clean', ['move', 'sass', 'moveAssets','moveData'],
+    runSequence('clean', ['move', 'sass', 'moveAssets', 'moveData'],
             'moveJs',
             'js:browserify',
             'inject',
             callback);
 });
 gulp.task('prod', function (callback) {
-    runSequence('clean:dist', ['move:dist', 'sass:dist', 'images:dist', 'font:dist'],
-            'moveJs:dist',
-            'moveData:dist',
+    runSequence('sass:dist',
             'js:dist',
             'inject:dist',
-            'useref:dist',
             callback);
 });
 

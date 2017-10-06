@@ -279,7 +279,7 @@ input.ng-invalid.ng-dirty {
 /* accessibility */
 [type="checkbox"]:checked:focus + label:before,
 [type="checkbox"]:not(:checked):focus + label:before {
-    border: 2px dotted blue;
+    border: 2px dotted $color_blue_theme;
 }
 
 /* hover style just for information */
