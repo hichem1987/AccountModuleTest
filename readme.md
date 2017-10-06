@@ -29,8 +29,10 @@ gulp prod
 ```
 Several other Gulp tasks are set in the project
 ### Functionnalities existing in this Project
+```
 Sign In Interface
 Sign Up interface
 Dashboard Interface
 Update Account Interface
+```
 
